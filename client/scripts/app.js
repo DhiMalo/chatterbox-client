@@ -38,11 +38,38 @@ app.fetch = function(message){
   });
 };
 
+// $('#chats').html('<blink>OMG IT\'s 1998!</blink>');
+
 app.clearMessages = function(){
-  // $('.chats').children().length = 0;
+  $('#chats').empty();
+}; 
+
+var message = {
+  username: 'Mel Brooks',
+  text: 'I didn\'t get a harumph outa that guy.!',
+  roomname: 'lobby'
 };
-app.clearMessages();
-console.log(app.clearMessages);
+
+
+app.addMessage = function(message){
+  $('#chats').html('<div>message.text</div>');
+};
+
+app.addRoom = function(roomname){
+  $('#roomSelect').html('<option>roomname</option>');
+};
+
+app.addFriend = function(username){
+  $('username').html('<div class ="username"> </div>');
+  $('.username').click(function() {
+    console.log('Let\'s be friends!')
+  })
+};
+
+
+
+
+// console.log(app.clearMessages);
 
 
 // // YOUR CODE HERE:
