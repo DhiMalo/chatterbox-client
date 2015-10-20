@@ -50,19 +50,28 @@ var message = {
   roomname: 'lobby'
 };
 
+window.app.messages = {};
 
 app.addMessage = function(message){
+  var chatsMessages =  window.app.messages
+  chatsMessages[message.username] = message;
+  chatsMessages[message.username].friends = [];
+ 
   $('#chats').html('<div>message.text</div>');
+
 };
 
 app.addRoom = function(roomname){
   $('#roomSelect').html('<option>roomname</option>');
 };
 
-app.addFriend = function(username){
-  $('username').html('<div class ="username"> </div>');
-  $('.username').click(function() {
-    console.log('Let\'s be friends!')
+app.addFriend = function(){
+
+  $('#main').html('<button class ="username"> </button>');
+  $('.username').on('click', function() {
+    alert('Let\'s be friends!');
+    myUsername = prompt('what is your userName?')
+    window.app.messages[myUsername].friends.push('username')
   })
 };
 
