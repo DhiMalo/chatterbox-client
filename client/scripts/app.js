@@ -51,7 +51,7 @@ app.fetch = function(){
       for( var i = 0; i < data.results.length; i++){
         var message = data.results[i];
         var $message = $('<button></button>');
-        var singleMessage = $message.text(message.username + 'says: ' + message.text);
+        var singleMessage = $message.text(message.username + ' says: ' + message.text);
         $message.appendTo('#main');
       
       console.log('here is a single message: ', message)
@@ -66,8 +66,6 @@ app.fetch = function(){
     }
   });
 };
-
-// $('#chats').html('<blink>OMG IT\'s 1998!</blink>');
 
 app.clearMessages = function(){
   $('#chats').empty();
