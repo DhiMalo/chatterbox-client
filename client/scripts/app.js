@@ -1,6 +1,11 @@
 
 var app = {};
-  app.server = 'https://api.parse.com/1/classes/chatterbox'
+  
+app.server = 'https://api.parse.com/1/classes/chatterbox'
+
+app.clearMessages = function(){
+  $('#chats').empty();
+}; 
 
 app.fetch = function(room){
   if (room === undefined) {var room = 'chatterbox';};
@@ -10,13 +15,15 @@ app.fetch = function(room){
     // data: '',
     contentType: 'application/json',
     success: function (data) { 
+      app.clearMessages();
       for( var i = 0; i < data.results.length; i++){
         var message = data.results[i];
         var $message = $('<button></button>');
         var singleMessage = $message.text(message.username + ' says: ' + message.text);
-        $message.appendTo('#main');
+        
+        $message.prependTo('#chats');
       
-      console.log('here is a single message: ', message)
+      console.log('data: ', data);
     }
       //   $(dataResults[i]).appendTo('$('.chatform'))
       // }
@@ -62,6 +69,7 @@ app.send = function(message){
     contentType: 'application/json',
     success: function (data) {
       console.log('chatterbox: Message sent');
+      console.log('an awesome message you just sent: ' ,data)
     },
     error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -74,11 +82,8 @@ app.send = function(message){
 };
 
 
-app.clearMessages = function(){
-  $('#chats').empty();
-}; 
 
-var message = {
+var messageSample = {
   username: 'Mel Brooks',
   text: 'I didn\'t get a harumph outa that guy.!',
   roomname: 'lobby'

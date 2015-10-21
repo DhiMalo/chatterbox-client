@@ -22,11 +22,13 @@
       <textarea class="chatArea" name="comment" placeholder="chat message "></textarea>  
       <input class="chatbutton" type="button" onclick="app.addMessage("hello")" value="submit!">
        <form class = "refreshfeed">
-      <input class = "refreshbutton" type="button" onClick="app.fetch()" value="Update Chat Feed">
-    </form>
+      <input class = "refreshbutton" type="button" onClick="app.fetch(window.selections.selectedRoom)" value="Update Chat Feed">
+      </form>
       <form class = "loginAsNewUser">
       <input class = "startOverButton" type="button" onClick="history.go(0)";"app.fetch()" value="Login as New User">
-    </form>
+      </form>
+    </div>
+    <div id ="chats">
     <script>'You are logged in as'+window.selections.selectedUsername+'and have entered room'+ window.selections.selectedRoom+'! ' </script>
     </form>
       
