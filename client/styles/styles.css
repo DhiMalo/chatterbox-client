@@ -103,3 +103,7 @@ form input[type=text] {
   height: 70px;
   font: 16px/1.4 "Times New Roman", Helvetica, Arial, sans-serif;
 }
+
+.startOverButton {
+    background-color: orange;
+}
