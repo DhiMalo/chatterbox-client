@@ -36,20 +36,33 @@ app.send = function(message){
       console.error('chatterbox: Failed to send message');
     }
   });
+
+
+
 };
 
 app.fetch = function(){
   $.ajax({
     url: app.server,
     type: 'GET',
-    data: '',
+    // data: '',
     contentType: 'application/json',
-    success: function (data) {
-      console.log('chatterbox: Message sent');
+    success: function (data) { 
+      for( var i = 0; i < data.results.length; i++){
+        var message = data.results[i];
+        var $message = $('<button></button>');
+        var singleMessage = $message.text(message.username + 'says: ' + message.text);
+        $message.appendTo('#main');
+      
+      console.log('here is a single message: ', message)
+    }
+      //   $(dataResults[i]).appendTo('$('.chatform'))
+      // }
+      // console.log('data is:', data);
     },
     error: function (data) {
       // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
-      console.error('chatterbox: Failed to send message');
+      console.error('chatterbox: Failed to get message');
     }
   });
 };
