@@ -8,6 +8,7 @@
 
     <!-- dependencies -->
     <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="../lib/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
     <!-- your scripts -->
     <script src="env/config.js"></script>
@@ -15,13 +16,13 @@
   </head>
   <body>
     <div id="main">
-      <h1>chatterbox this</h1>
-      <div class="chats">CHAT HERE!!!</div>
-      <br>
-      <br>
-        <span>Hi MOM </span>  <br>
-        <span>Hi MOM </span>  <br>    
-        <span>Hi MOM </span>  <br>
+      <h1>chatterbox</h1>
+      <div class="chats"></div>
+      <form class="chatform" action=" " method="publish">
+      <textarea class="chatArea" name="comment" placeholder="chat message "></textarea>  
+      <input class="chatbutton" type="button" onclick="app.addMessage("hello")" value="submit!">
+    </form>
+      
       <!-- Your HTML goes here! -->
     </div>
   </body>

@@ -1,13 +1,30 @@
+
 var app = {};
+  app.server = 'https://api.parse.com/1/classes/chatterbox'
 
 app.init = function(){
-
+  window.app.messages = {};
+  
+  var localUsr = prompt('please provide username here:');
+  var room = prompt('what room will you like to enter?');
+  window.app.messages[localUsr] = {
+    username: localUsr,
+    text: ' ',
+    roomname: room,
+    friends: []
+  };
+  setInterval(app.fetch, 10000);
 };
+
+
+app.init();
+
+
 app.send = function(message){
 
   $.ajax({
     // This is the url you should use to communicate with the parse API server.
-    url: 'https://api.parse.com/1/classes/chatterbox',
+    url: app.sever,
     type: 'POST',
     data: JSON.stringify(message),
     contentType: 'application/json',
@@ -21,12 +38,11 @@ app.send = function(message){
   });
 };
 
-app.fetch = function(message){
+app.fetch = function(){
   $.ajax({
-    // This is the url you should use to communicate with the parse API server.
-    url: undefined,
+    url: app.server,
     type: 'GET',
-    data: JSON.stringify(message),
+    data: '',
     contentType: 'application/json',
     success: function (data) {
       console.log('chatterbox: Message sent');
@@ -50,7 +66,6 @@ var message = {
   roomname: 'lobby'
 };
 
-window.app.messages = {};
 
 app.addMessage = function(message){
   var chatsMessages =  window.app.messages
@@ -68,13 +83,13 @@ app.addRoom = function(roomname){
 app.addFriend = function(){
 
   $('#main').html('<button class ="username"> </button>');
-  $('.username').on('click', function() {
+  $('.username').click(function() {
     alert('Let\'s be friends!');
-    myUsername = prompt('what is your userName?')
-    window.app.messages[myUsername].friends.push('username')
+    window.app.messages[username].friends.push('username')
   })
 };
 
+app.addFriend();
 
 
 

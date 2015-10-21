@@ -82,3 +82,24 @@ form input[type=text] {
 .spinner img {
     padding: 10px;
 }
+
+.chatbutton {
+  background-color: #00bfff;
+}
+
+.chatform {
+  border: 1px solid #c6c7cc;
+  border-radius: 5px;
+  font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  width: 500px;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0
+}
+
+.chatArea {
+  width: 490px;
+  height: 70px;
+  font: 16px/1.4 "Times New Roman", Helvetica, Arial, sans-serif;
+}
